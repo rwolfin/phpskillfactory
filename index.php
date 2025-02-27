@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/items.css">
     <title>PHP</title>
 </head>
 <body>
@@ -14,7 +13,7 @@
   
     <?php
 
-$example_persons_array = [
+    $example_persons_array = [
     [
         'fullname' => 'Иванов Иван Иванович',
         'job' => 'tester',
@@ -214,11 +213,7 @@ function getPerfectPartner(string $surname, string $name, string $patronomyc, ar
         "♡ Идеально на {$compatibility}% ♡\n";
 }
 
-
-echo "\n\n";
-
-
-?>
+echo "\n\n"; ?>
 
 
 <h1>Примеры вызова функций (для тестирования)</h1>
