@@ -1,19 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PHP</title>
-</head>
-<body>
+<?php
 
-<div class="container">
-    <h1>< PHP ></h1>
-    <div class="row-br">
-  
-    <?php
-
-    $example_persons_array = [
+$example_persons_array = [
     [
         'fullname' => 'Иванов Иван Иванович',
         'job' => 'tester',
@@ -177,11 +164,13 @@ function getGenderDescription(array $persons_array): string
     $female_percentage = round(($female_count / $total_count) * 100, 1);
     $undefined_percentage = round(($undefined_count / $total_count) * 100, 1);
 
-    return "Гендерный состав аудитории:<br>" .
-        "---------------------------<br>" .
-        "<b>Мужчины</b> - {$male_percentage}%<br>" .
-        "<b>Женщины</b> - {$female_percentage}%<br>" .
-        "<b>Не удалось определить</b> - {$undefined_percentage}%<br>";
+    return <<<HEREDOC
+Гендерный состав аудитории:
+---------------------------
+Мужчины - {$male_percentage}%
+Женщины - {$female_percentage}%
+Не удалось определить - {$undefined_percentage}%
+HEREDOC;
 }
 
 
@@ -213,67 +202,29 @@ function getPerfectPartner(string $surname, string $name, string $patronomyc, ar
         "♡ Идеально на {$compatibility}% ♡\n";
 }
 
-echo "\n\n"; ?>
 
+$result =  <<<HEREDOC
+\n\n
+Примеры вызова функций (для тестирования)
+\n
+1. Пример getFullnameFromParts:  . getFullnameFromParts('Иванов', 'Иван', 'Иванович') . "
+\n
+2. Пример getPartsFromFullname: 
+\n
+3.  . print_r(getPartsFromFullname('Иванов Иван Иванович'), true) . "
+\n
+4. Пример getShortName: " . getShortName('Иванов Иван Иванович') . "
+\n\n
+5. Пример getGenderFromName: " . getGenderFromName('Иванова Алина Ивановна') . "
+\n\n
+6. Пример getGenderFromName: " . getGenderFromName('Иванов Иван Иванович') . "
+\n\n
+7. Пример getGenderFromName: " . getGenderFromName('Яковлев Яков Яковлевич') . "
+\n\n
+8. Пример getGenderDescription: \n" . getGenderDescription($example_persons_array) . "
+\n\n
+9. Пример getPerfectPartner: \n" . getPerfectPartner('иванов', 'иван', 'иванович', $example_persons_array) . "
+\n
+HEREDOC;
 
-<h1>Примеры вызова функций (для тестирования)</h1>
-
-<div class="bordered">
-  1.  <? echo "Пример getFullnameFromParts: " . getFullnameFromParts('Иванов', 'Иван', 'Иванович'); ?>
-</div>
-
-<div class="bordered">
-  2. <? echo "Пример <b class='php'>getPartsFromFullname</b>: "; ?> 
-</div>
-
-<div class="bordered">
-  3.<? print_r(getPartsFromFullname('Иванов Иван Иванович')); ?>
-</div>
-
-<div class="bordered">
-  4.<? echo "Пример <b class='php'>getShortName</b>: " . getShortName('Иванов Иван Иванович') . "\n\n"; ?>
-</div>
-
-<div class="bordered">
-  5.<? echo "Пример <b class='php'>getGenderFromName</b>: " . getGenderFromName('Иванова Алина Ивановна') . "\n\n"; ?>
-</div>
-
-<div class="bordered">
-  6.<? echo "Пример <b class='php'>getGenderFromName</b>: " . getGenderFromName('Иванов Иван Иванович') . "\n\n"; ?>
-</div>
-
-<div class="bordered">
-  7.<? echo "Пример <b class='php'>getGenderFromName</b>: " . getGenderFromName('Яковлев Яков Яковлевич') . "\n\n"; ?>
-</div>
-
-<div class="bordered">
-  8.<? echo "Пример <b class='php'>getGenderDescription</b>: " . getGenderDescription($example_persons_array) . "\n\n"; ?>
-</div>
-
-<div class="bordered">
-  9.<? echo "Пример <b class='php'>getPerfectPartner</b>: \r\n" . getPerfectPartner('иванов', 'иван', 'иванович', $example_persons_array); ?>
-</div>
-
-</div>
-</div>    
-
-<style>
-    .row-br { border: 4px solid #08bb08; padding: 10px;}
-    h1 { color: #000000; font-style: italic; }
-
-    .bordered {
-    border: 2px solid #ddd;
-    padding: 7px;
-    margin-bottom: 5px;
-    }
-
-    b.php {
-    color: #687cd7;
-    }
-
-</style>
-
-</body> 
-</html>
-
-
+?>
